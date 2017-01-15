@@ -385,6 +385,22 @@ cpdefine("inline:com-chilipeppr-workspace-tinyg", ["chilipeppr_ready"], function
                     });
                 }
             );
+            chilipeppr.load(
+  "#myDivWidgetCam",
+  "http://raw.githubusercontent.com/chilipeppr/widget-cam/master/auto-generated-widget.html",
+  function() {
+    // Callback after widget loaded into #myDivWidgetCam
+    // Now use require.js to get reference to instantiated widget
+    cprequire(
+      ["inline:com-chilipeppr-widget-cam"], // the id you gave your widget
+      function(myObjWidgetCam) {
+        // Callback that is passed reference to the newly loaded widget
+        console.log("Widget / Cam just got loaded.", myObjWidgetCam);
+        myObjWidgetCam.init();
+      }
+    );
+  }
+);
         },
         /**
          * Load the Console widget via chilipeppr.load()
@@ -1581,10 +1597,6 @@ cpdefine("inline:com-chilipeppr-workspace-tinyg", ["chilipeppr_ready"], function
             </div>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="well">Mi pagina 
-                    </div>  
-                </div> 
-                <div class="row">
                     <div class="col-xs-3 widgetx padrt">
                         <!-- 3D Viewer. Must be loaded at top to get z-orders correct -->
                         <div id="com-chilipeppr-3dviewer">Load 3D Viewport Here</div>
@@ -1723,7 +1735,7 @@ cpdefine("inline:com-chilipeppr-workspace-tinyg", ["chilipeppr_ready"], function
                         <!-- Tinyg -->
                         <div id="com-chilipeppr-tinyg" class="">Load TinyG Here</div>
                         <!-- WebRTC Client -->
-                        <div id="com-chilipeppr-webrtcclient" class="">Camara</div>
+                        <div id="myDivWidgetCam" class="">Camara</div>
                         <!-- Serial Port Selector -->
                         <div id="com-chilipeppr-widget-spjs-instance" class="">Load Serial Port Selector Here</div>
                     </div>
